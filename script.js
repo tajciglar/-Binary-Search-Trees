@@ -28,10 +28,33 @@ class Tree {
         
         return newNode;
     }
+
+    insert(value) {
+        let element = this.root;
+      
+        while(element.rightChild !== null || element.leftChild !== null){
+            if (element.data > value) {
+                console.log(element.data);
+                element = element.leftChild;
+                console.log(element)
+            } else {
+                console.log(element.data);
+                element = element.rightChild;
+                console.log(element)
+            }
+        }
+        if(element.data > value){
+            element.leftChild = new Node(value)
+        } else {
+            element.rightChild = new Node(value)
+        }
+        console.log(this.root);
+
+    }
 }
 
 
-const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 161, 20, 22, 0];
+const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 161, 20, 22];
 const newArray = [...new Set(array)]
 newArray.sort((a, b) => a - b)
 
@@ -52,5 +75,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 
+prettyPrint(tree.root);
+tree.insert(40);
+prettyPrint(tree.root);
+tree.insert(27)
+prettyPrint(tree.root);
+tree.insert(21)
 prettyPrint(tree.root);
 
