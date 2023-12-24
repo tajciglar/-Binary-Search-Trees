@@ -83,6 +83,29 @@ class Tree {
         } 
         return element;
     }
+
+    find(value){
+        let root = this.root;
+        if (root === null) {
+            console.log("Tree is empty");
+            return;
+        }
+        while(value !== root.data){
+            
+            if(root.data > value){
+                root = root.leftChild;
+            } else {
+                root = root.rightChild;
+            }
+
+            if (root === null) {
+                console.log("Data doesnt exist");
+                return;
+            }
+        }
+    
+        console.log("Data found: ", root);
+    }
 }
 
 // Function that shows the tree in console
@@ -132,5 +155,6 @@ prettyPrint(tree.root);
 prettyPrint(tree.root);
 tree.delete(22)
 prettyPrint(tree.root);
+tree.find(23);
 
 
